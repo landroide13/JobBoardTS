@@ -1,10 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
 
-const Register = () => {
+import { StackScreenProps } from '@react-navigation/stack'
+
+interface Props extends StackScreenProps<any , any>{}
+
+const Register = ({ navigation }: Props) => {
   return (
     <View>
       <Text>Register</Text>
+
+      <Button  title='Register' onPress={() => navigation.navigate('Profile')}/>
     </View>
   )
 }

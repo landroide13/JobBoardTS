@@ -1,4 +1,3 @@
-// import 'react-native-gesture-handler';
 
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
@@ -12,7 +11,11 @@ const Stack = createStackNavigator();
 
 const GeneralStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator 
+        // screenOptions={{
+        //     headerShown: false
+        // }}
+    >
       <Stack.Screen name="Signin" component={SignIn} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Profile" component={DrawerMain} />

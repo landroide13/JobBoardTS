@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
 
-const SignIn = () => {
+import { StackScreenProps } from '@react-navigation/stack'
+
+interface Props extends StackScreenProps<any , any>{}
+
+const SignIn = ({ navigation }: Props) => {
   return (
     <View>
-      <Text>SignIn</Text>
+      <Text>Sign In</Text>
+
+      <Button  title='Sign In' onPress={() => navigation.navigate('Profile')}/>
     </View>
   )
 }
 
 export default SignIn
 
-const styles = StyleSheet.create({})
