@@ -11,9 +11,9 @@ const Stack = createStackNavigator();
 const GeneralStack = () => {
   return (
     <Stack.Navigator 
-        // screenOptions={{
-        //     headerShown: false
-        // }}
+        screenOptions={{
+            headerShown: false
+        }}
     >
       <Stack.Screen name="Signin" component={SignIn} />
       <Stack.Screen name="Register" component={Register} />
