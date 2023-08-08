@@ -11,6 +11,7 @@ const SignIn = ({ navigation }: Props) => {
       <Text>Sign In</Text>
 
       <Button  title='Sign In' onPress={() => navigation.navigate('Profile')}/>
+      <Button  title='Register' onPress={() => navigation.navigate('Register')}/>
     </View>
   )
 }

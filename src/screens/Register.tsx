@@ -11,6 +11,7 @@ const Register = ({ navigation }: Props) => {
       <Text>Register</Text>
 
       <Button  title='Register' onPress={() => navigation.navigate('Profile')}/>
+      <Button  title='SignIn' onPress={() => navigation.navigate('Signin')}/>
     </View>
   )
 }
