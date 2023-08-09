@@ -3,13 +3,16 @@ import { StyleSheet, Text,
         Image, TextInput, FlatList, 
         ActivityIndicator, 
         StatusBar, SafeAreaView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import JobCard from '../components/JobCard';
 import useJobs from '../hooks/useJobs';
 import HorizontalSlider from '../components/HorizontalSlider';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-interface Props extends StackScreenProps<any , any>{}
+// interface Props extends StackScreenProps<any , any>{};
+
+interface Props extends DrawerScreenProps<any , any>{}
 
 const Main = ({ navigation }: Props) => {
 
@@ -21,13 +24,13 @@ const Main = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-        
-    <View>
+      <View>
         <View style={styles.header}>
             <Image style={styles.userImg} source={require('../assets/profile.jpg')} />
             <Text style={styles.user}>Hello: </Text>
-            <TouchableOpacity style={styles.buttonHeader}>
+            <TouchableOpacity style={styles.buttonHeader} onPress={() => navigation.toggleDrawer()}>
                <Text>Open Drawer</Text>
+                {/* <Icon name="bars" size={25} color={ colors.primary }  />   */}
             </TouchableOpacity>
         </View>
 
@@ -58,6 +61,7 @@ const Main = ({ navigation }: Props) => {
                 <Text style={styles.options}>Contactor</Text>
             </TouchableOpacity>
         </View>
+
         <Text style={styles.title}>Popular Jobs</Text>
 
         <View style={styles.popularContainer}>
@@ -68,19 +72,18 @@ const Main = ({ navigation }: Props) => {
         } 
         </View>
 
+          <Text style={styles.title}>Near by Jobs</Text>
         
-            <Text style={styles.title}>Near by Jobs</Text>
-        
-            <View style={styles.nearByContainer}>
-            {
-                isLoading ? ( <ActivityIndicator size="large" /> ):
+          <View style={styles.nearByContainer}>
+          {
+            isLoading ? ( <ActivityIndicator size="large" /> ):
                 
-                <HorizontalSlider jobs={ jobs } />
-            } 
-            </View>
-    </View>
-    
-  </SafeAreaView>
+            <HorizontalSlider jobs={ jobs } />
+          } 
+          </View>
+
+      </View>
+    </SafeAreaView>
   )
 }
 

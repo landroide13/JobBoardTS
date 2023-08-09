@@ -17,9 +17,9 @@ const Stack = createStackNavigator<ProfileStackParams>();
 const ProfileStack = () => {
   return (
     <Stack.Navigator 
-        // screenOptions={{
-        //     headerShown: false
-        // }}
+        screenOptions={{
+            headerShown: false
+        }}
     >
       <Stack.Screen name="Main" component={Main} />
       <Stack.Screen name="Detail" component={Detail} />
