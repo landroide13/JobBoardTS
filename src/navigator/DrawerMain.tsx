@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, } from '@react-navigation/drawer';
-import Main from '../screens/Main';
+//import Main from '../screens/Main';
 import History from '../screens/History';
 import ProfileStack from './ProfileStack';
-import { styles } from '../themes/AppThemes';
+import { styles, colors } from '../themes/AppThemes';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,7 +33,7 @@ const InternalMenu = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation.navigate('Main')}
         >
           <View style={ styles.drawerItemContainer }>
-            {/* <Text><Icon name="outdent" size={25} color='black'  /></Text>     */}
+            <Text><Icon name="outdent" size={25} color='black'  /></Text>    
             <Text style={{ ...styles.menuText, marginLeft: 8 }}>Main</Text>
           </View>
         </TouchableOpacity>
@@ -42,7 +43,7 @@ const InternalMenu = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation.navigate('History')}
         >
           <View style={ styles.drawerItemContainer }>
-            {/* <Text><Icon name="sliders" size={25} color='black'  /></Text>      */}
+            <Text><Icon name="sliders" size={25} color='black'  /></Text>     
             <Text style={{ ...styles.menuText, marginLeft: 8 }}>History</Text>
           </View>    
         </TouchableOpacity>

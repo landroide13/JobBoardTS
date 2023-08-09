@@ -10,6 +10,10 @@ import useJobs from '../hooks/useJobs';
 import HorizontalSlider from '../components/HorizontalSlider';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import { colors } from '../themes/AppThemes';
+
 // interface Props extends StackScreenProps<any , any>{};
 
 interface Props extends DrawerScreenProps<any , any>{}
@@ -26,11 +30,12 @@ const Main = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.header}>
-            <Image style={styles.userImg} source={require('../assets/profile.jpg')} />
-            <Text style={styles.user}>Hello: </Text>
+            <View style={ styles.IdHeader }>
+              <Image style={styles.userImg} source={require('../assets/profile.jpg')} />
+              <Text style={{ ...styles.user, marginLeft: 13}}>Hello: </Text>
+            </View>          
             <TouchableOpacity style={styles.buttonHeader} onPress={() => navigation.toggleDrawer()}>
-               <Text>Open Drawer</Text>
-                {/* <Icon name="bars" size={25} color={ colors.primary }  />   */}
+                <Icon name="bars" size={25} color={ colors.white }  />  
             </TouchableOpacity>
         </View>
 
@@ -44,7 +49,7 @@ const Main = ({ navigation }: Props) => {
                 style={styles.inputSearch}
             />
             <TouchableOpacity style={styles.buttonSearch} onPress={() => { }}>
-                <Image style={styles.userImgSearch} source={require('../assets/search.png')} />
+                <Icon name="map-pin" size={25} color={ colors.white }  />  
             </TouchableOpacity>
         </View>
 
@@ -66,21 +71,21 @@ const Main = ({ navigation }: Props) => {
 
         <View style={styles.popularContainer}>
         {
-            isLoading ? ( <ActivityIndicator size="large" /> ):
+          isLoading ? ( <ActivityIndicator size="large" /> ):
             
-            <HorizontalSlider jobs={ jobs } />
+          <HorizontalSlider jobs={ jobs } />
         } 
         </View>
 
-          <Text style={styles.title}>Near by Jobs</Text>
+        <Text style={styles.title}>Near by Jobs</Text>
         
-          <View style={styles.nearByContainer}>
-          {
-            isLoading ? ( <ActivityIndicator size="large" /> ):
+        <View style={styles.nearByContainer}>
+        {
+          isLoading ? ( <ActivityIndicator size="large" /> ):
                 
-            <HorizontalSlider jobs={ jobs } />
-          } 
-          </View>
+          <HorizontalSlider jobs={ jobs } />
+        } 
+        </View>
 
       </View>
     </SafeAreaView>
@@ -96,12 +101,17 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: 'white',
       padding: 8,
-      marginTop: StatusBar.currentHeight || 0,
+      //marginTop: StatusBar.currentHeight || 0,
   },
   header:{
       flexDirection: 'row',
-      justifyContent:'space-around',
+      justifyContent:'space-between',
   },
+
+  IdHeader:{
+    flexDirection: 'row',
+  },
+
   user:{
       fontSize:18,
       alignSelf:'center'
