@@ -73,7 +73,7 @@ const Main = ({ navigation }: Props) => {
         {
           isLoading ? ( <ActivityIndicator size="large" /> ):
             
-          <HorizontalSlider jobs={ jobs } />
+          <HorizontalSlider jobs={ jobs }  />
         } 
         </View>
 
@@ -83,7 +83,7 @@ const Main = ({ navigation }: Props) => {
         {
           isLoading ? ( <ActivityIndicator size="large" /> ):
                 
-          <HorizontalSlider jobs={ jobs } />
+          <HorizontalSlider jobs={ jobs }  />
         } 
         </View>
 

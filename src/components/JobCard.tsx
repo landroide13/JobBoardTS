@@ -14,7 +14,7 @@ const JobCard = ({ job }: Props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Detail', job)}>
-        <Image source={{  }} resizeMode='contain' style={styles.logoImage} />
+        <Image source={{ uri: job.employer_logo! }} resizeMode='contain' style={styles.logoImage} />
       </TouchableOpacity>
       <View style={styles.textContainer}>
         <Text style={styles.employer}>{ job.employer_name }</Text>
