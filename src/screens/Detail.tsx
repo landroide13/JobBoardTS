@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import React, { useState, useCallback } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { ProfileStackParams } from '../navigator/ProfileStack';
@@ -9,9 +9,11 @@ import Tab from '../components/Tabs/Tab';
 import Company from '../components/Company';
 import Footer from '../components/Footer';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 interface Props extends StackScreenProps<ProfileStackParams, 'Detail'>{};
 
-const Detail = ({ route }: Props) => {
+const Detail = ({ route, navigation }: Props) => {
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -81,10 +83,30 @@ const Detail = ({ route }: Props) => {
       </ScrollView>  
 
       <Footer data={job}  url={job?.job_apply_link ?? 'https://careers.google.com/jobs/results/'} />
+
+      <TouchableOpacity style={ styles.backBtn } onPress={() => navigation.pop()} >
+        <Icon name='arrow-left' color='white' size={ 38 } />
+      </TouchableOpacity>
     </>
   )
 }
 
 export default Detail
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+  backBtn:{
+    position: 'absolute',
+    zIndex: 100,
+    elevation: 9,
+    top: 30,
+    left: 5,
+    backgroundColor: '#F37A09',
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
+})

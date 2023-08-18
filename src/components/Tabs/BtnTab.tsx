@@ -10,11 +10,11 @@ interface Props{
 const BtnTab = ({ name, activeTab, onHandleSearchType }: Props) => {
   return (
     <TouchableOpacity
-      style={{...styles.btn , backgroundColor: name === activeTab ? '#6F42F0' : "#F3F4F8" }}
+      style={{...styles.btn , backgroundColor: name === activeTab ? '#F37A09' : "#F3F4F8" }}
       onPress={onHandleSearchType}
     >
     <Text 
-      style={{ ...styles.btnText, color: name === activeTab ? "#C3BFCC" : "#AAA9B8" }}
+      style={{ ...styles.btnText, color: name === activeTab ? "white" : "#AAA9B8" }}
     >{name}</Text>
   </TouchableOpacity>
   )
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
       btnText:{
         //fontFamily: Platform.OS === 'android'? 'Roboto' : null,
         fontSize: 16,
-        fontWeight: '700'
+        fontWeight: '900'
       },
 })
