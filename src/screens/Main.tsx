@@ -23,7 +23,7 @@ const Main = ({ navigation }: Props) => {
 
   const [searchTerm, setSearchTerm] = useState("Full-Time");
 
-  const [selectedJob, setSelectedJob] = useState();
+  //const [selectedJob, setSelectedJob] = useState();
 
   const { isLoading, jobs } = useJobs();
 
@@ -57,22 +57,31 @@ const Main = ({ navigation }: Props) => {
         </View>
 
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("Full-Time")}>
-                <Text style={styles.options}>Full-Time</Text>
+            <TouchableOpacity 
+                style={{ ...styles.buttonOptions, backgroundColor: searchTerm === "Full-Time" ? '#F37A09' : "#C0C0C0" }} 
+                onPress={() => setSearchTerm("Full-Time")}>
+                <Text 
+                    style={{ ...styles.options, color: searchTerm === "Full-Time" ? 'white' : "black"}}>Full-Time</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("Part-Time")}>
-                <Text style={styles.options}>Part-Time</Text>
+            <TouchableOpacity 
+                style={{ ...styles.buttonOptions, backgroundColor: searchTerm === "Part-Time" ? '#F37A09' : "#C0C0C0"}} 
+                onPress={() => setSearchTerm("Part-Time")}>
+                <Text 
+                    style={{ ...styles.options, color: searchTerm === "Part-Time" ? 'white' : "black"}}>Part-Time</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("CONTRACTOR")}>
-                <Text style={styles.options}>Contactor</Text>
+            <TouchableOpacity 
+                style={{ ...styles.buttonOptions, backgroundColor: searchTerm === "CONTRACTOR" ? '#F37A09' : "#C0C0C0" }} 
+                onPress={() => setSearchTerm("CONTRACTOR")}>
+                <Text 
+                    style={{ ...styles.options, color: searchTerm === "CONTRACTOR" ? 'white' : "black"}}>Contactor</Text>
             </TouchableOpacity> 
         </View>
 
         <Text style={styles.title}>{ searchTerm } Jobs</Text>
 
-        <View style={styles.nearByContainer}>
+        <View style={styles.popularContainer}>
         {
             loading ? ( <ActivityIndicator size="large" /> ):
 
@@ -92,7 +101,7 @@ const Main = ({ navigation }: Props) => {
 
         <Text style={styles.title}>Near by Jobs</Text>
         
-        <View style={styles.nearByContainer}>
+        <View style={styles.popularContainer}>
         {
           isLoading ? ( <ActivityIndicator size="large" /> ):
                 
@@ -160,13 +169,11 @@ const styles = StyleSheet.create({
   buttonContainer:{
       flexDirection:'row',
       justifyContent:'space-around',
-      marginTop: 20
+      marginTop: 20,
+      marginBottom: 15
   },
   buttonOptions:{
-      backgroundColor:'white',
       padding: 15,
-      borderColor: 'black',
-      borderWidth: 2,
       borderRadius: 15
   },
   options:{
