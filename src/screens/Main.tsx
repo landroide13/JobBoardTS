@@ -1,9 +1,9 @@
 import { StyleSheet, Text, 
         TouchableOpacity, View, 
-        Image, TextInput, FlatList, 
+        Image, TextInput,  
         ActivityIndicator, 
         StatusBar, SafeAreaView } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import JobCard from '../components/JobCard';
 import useJobs from '../hooks/useJobs';
@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { colors } from '../themes/AppThemes';
 import useJobType from '../hooks/useJobType';
+import useJobMode from '../hooks/useJobMode';
 
 // interface Props extends StackScreenProps<any , any>{};
 
@@ -23,11 +24,13 @@ const Main = ({ navigation }: Props) => {
 
   const [searchTerm, setSearchTerm] = useState("Full-Time");
 
-  //const [selectedJob, setSelectedJob] = useState();
+  //const [JobMode, setSelectedJobMode] = useState();
 
   const { isLoading, jobs } = useJobs();
 
   const { jobsType, loading } = useJobType(searchTerm);
+
+  const { jobMode, loads } = useJobMode(true);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,7 +51,7 @@ const Main = ({ navigation }: Props) => {
             <TextInput 
                 placeholder='Find a Job'
                 onChangeText={(text) => { }}
-                // value={searchTerm}
+                // value={}
                 style={styles.inputSearch}
             />
             <TouchableOpacity style={styles.buttonSearch} onPress={() => { }}>
@@ -99,13 +102,13 @@ const Main = ({ navigation }: Props) => {
         } 
         </View>
 
-        <Text style={styles.title}>Near by Jobs</Text>
+        <Text style={styles.title}>Remote Jobs</Text>
         
         <View style={styles.popularContainer}>
         {
-          isLoading ? ( <ActivityIndicator size="large" /> ):
+          loads ? ( <ActivityIndicator size="large" /> ):
                 
-          <HorizontalSlider jobs={ jobs }  />
+          <HorizontalSlider jobs={ jobMode }  />
         } 
         </View>
 

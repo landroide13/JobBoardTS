@@ -91,7 +91,7 @@ const Detail = ({ route, navigation }: Props) => {
   )
 }
 
-export default Detail
+export default Detail;
 
 const styles = StyleSheet.create({
 
