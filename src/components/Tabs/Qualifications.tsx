@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 12,
     padding: 10,
+    marginBottom: 35
   },
   title: {
     fontSize: 24,
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   },
   pointsContainer: {
     marginVertical: 8,
+    marginBottom: 35
   },
   pointWrapper: {
     flexDirection: "row",

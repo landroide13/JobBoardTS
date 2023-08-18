@@ -55,7 +55,6 @@ const Detail = ({ route }: Props) => {
     }
   };
 
-
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}

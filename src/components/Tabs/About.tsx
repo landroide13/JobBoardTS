@@ -12,6 +12,7 @@ const About = ({ info }: Props) => {
 
       <View style={styles.contentBox}>
         <Text style={styles.contextText}>{info}</Text>
+
       </View>
     </View>
   )
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 16,
     padding: 10,
+    //marginBottom: 25
   },
   headText: {
     fontSize: 22,
@@ -39,5 +41,6 @@ const styles = StyleSheet.create({
     color: 'grey',
     //fontFamily: Platform.OS === 'android'? 'Roboto' : null,
     marginVertical: 15,
+    marginBottom: 35
   },
 })

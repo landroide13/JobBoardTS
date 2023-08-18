@@ -12,13 +12,13 @@ const Company = ({ companyLogo, jobTitle, companyName, location }: Props) => {
   return (
     <View style={styles.container}>
           <View style={ styles.logoBox }>
-          <Image
-              source={{ uri: companyLogo }}
-              style={styles.logoImage}
-            />
+            <Image
+                source={{ uri: companyLogo }}
+                style={styles.logoImage}
+              />
           </View>
     
-           <View style={styles.jobTitleBox}>
+          <View style={styles.jobTitleBox}>
             <Text style={styles.jobTitle}>{jobTitle}</Text>
           </View>
     
@@ -33,8 +33,7 @@ const Company = ({ companyLogo, jobTitle, companyName, location }: Props) => {
               <Text style={styles.locationName}>{location}</Text>
             </View>
           </View>
-    
-        </View>
+    </View>
   )
 }
 
