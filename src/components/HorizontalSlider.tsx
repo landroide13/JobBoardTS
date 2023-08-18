@@ -10,8 +10,7 @@ interface Props{
 const HorizontalSlider = ({ jobs }: Props) => {
 
   return (
-    <View>
-      
+    <View>  
       <FlatList
         data={ jobs }
         renderItem={({ item } ) => (
@@ -22,7 +21,6 @@ const HorizontalSlider = ({ jobs }: Props) => {
         keyExtractor={(item) => item._id.toString() }
         horizontal={ true }
       />
-      
     </View>
   )
 }

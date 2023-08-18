@@ -17,14 +17,14 @@ const useJobs = () => {
     });
 
     const getJobs = async () =>{
-        const allJobs = JobDB.get('/');
+      const allJobs = JobDB.get('/');
 
-        const res = await Promise.all([allJobs])
+      const res = await Promise.all([allJobs])
 
-        setJobsState({ jobs: res[0].data });
+      setJobsState({ jobs: res[0].data });
 
-        setisLoading(false);
-    }
+      setisLoading(false);
+    } 
 
     useEffect(() => {
      getJobs();

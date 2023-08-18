@@ -13,6 +13,7 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { colors } from '../themes/AppThemes';
+import useJobType from '../hooks/useJobType';
 
 // interface Props extends StackScreenProps<any , any>{};
 
@@ -20,11 +21,13 @@ interface Props extends DrawerScreenProps<any , any>{}
 
 const Main = ({ navigation }: Props) => {
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("Full-Time");
 
   const [selectedJob, setSelectedJob] = useState();
 
   const { isLoading, jobs } = useJobs();
+
+  const { jobsType, loading } = useJobType(searchTerm);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -44,7 +47,7 @@ const Main = ({ navigation }: Props) => {
         <View style={styles.inputContainer}>
             <TextInput 
                 placeholder='Find a Job'
-                onChangeText={(text) => setSearchTerm(text)}
+                onChangeText={(text) => { }}
                 // value={searchTerm}
                 style={styles.inputSearch}
             />
@@ -54,17 +57,27 @@ const Main = ({ navigation }: Props) => {
         </View>
 
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.buttonOptions} onPress={() =>{}}>
+            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("Full-Time")}>
                 <Text style={styles.options}>Full-Time</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonOptions} onPress={() =>{}}>
+            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("Part-Time")}>
                 <Text style={styles.options}>Part-Time</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonOptions} onPress={() =>{}}>
+            <TouchableOpacity style={styles.buttonOptions} onPress={() => setSearchTerm("CONTRACTOR")}>
                 <Text style={styles.options}>Contactor</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> 
+        </View>
+
+        <Text style={styles.title}>{ searchTerm } Jobs</Text>
+
+        <View style={styles.nearByContainer}>
+        {
+            loading ? ( <ActivityIndicator size="large" /> ):
+
+            <HorizontalSlider jobs={ jobsType }  />
+        }
         </View>
 
         <Text style={styles.title}>Popular Jobs</Text>
